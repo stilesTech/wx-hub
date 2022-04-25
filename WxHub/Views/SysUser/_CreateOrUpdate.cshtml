@@ -1,0 +1,53 @@
+﻿@model Entities.SysUser
+<div class="panel panel-default center-block" style="width: 30%">
+
+    <div class="panel-heading">用户信息</div>
+    <div class="panel-body">
+        @*<div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    @Html.DisplayNameFor(model => model.RoleName)
+                </div>
+                @Html.DropDownListFor(x => x.RoleName, ViewBag.rolesSelectList as IEnumerable<SelectListItem>, new { @class = "form-control", id = "select-category" })
+            </div>
+        </div>*@
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    @Html.DisplayNameFor(model => model.UserName)
+                </div>
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", placeholder = "输入昵称" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    @Html.DisplayNameFor(model => model.Account)
+                </div>
+                @Html.TextBoxFor(model => model.Account, new { @class = "form-control", type = "mail", placeholder = "输入账号" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    @Html.DisplayNameFor(model => model.Password)
+                </div>
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", placeholder = "输入用户密码" })
+            </div>
+        </div>
+        @*<div class="form-group">
+            <div class="input-group">
+                <div class="input-group-addon">
+                    @Html.DisplayNameFor(model => model.ConfirmPassword)
+                </div>
+                @Html.PasswordFor(model => model.ConfirmPassword, new { @class = "form-control", placeholder = "重复输入密码" })
+            </div>
+        </div>*@
+    </div>
+    @*<if condition="$error != null">
+        <div class="alert alert-danger" role="alert">{$error}</div>
+    </if>*@
+    <div class="panel-footer text-center">
+        <button type="submit" class="btn btn-primary" style="width: 30%">提交</button>
+    </div>
+</div>

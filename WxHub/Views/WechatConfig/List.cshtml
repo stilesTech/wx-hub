@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Entities.WechatConfig>
+@using OperateCenter.Extensions;
+@{
+    ViewBag.Title = "公众号列表";
+}
+@section style{
+    <script>
+        function IsDelNow() {
+            return confirm("确认要删除？");
+        }
+    </script>
+}
+<div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+    <div id="test">
+        <a href="" id="a"></a>
+    </div>
+    <h1 class="page-header"><i class="fa fa-file-text"></i> 公众号列表</h1>
+    @if (Model.Count() == 0)
+    {
+        <div><h3>暂无数据</h3></div>
+    }
+    else
+    {
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>@Html.DisplayNameFor(model => model.Name)</th>
+                    <th>@Html.DisplayNameFor(model => model.AppId)</th>
+                    <th>@Html.DisplayNameFor(model => model.AppSecret)</th>
+                    <th>@Html.DisplayNameFor(model => model.Description)</th>
+                    <th>@Html.DisplayNameFor(model => model.ArticleCover)</th>
+                    <th>@Html.DisplayNameFor(model => model.ArticleMenuCover)</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{int i = 1; }
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>@i</td>
+                    <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AppId)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AppSecret)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td><img src="@item.ArticleCover" style="max-width:80px;max-height:100px" /></td>
+                    <td><img src="@item.ArticleMenuCover" style="max-width: 80px; max-height: 100px"/></td>
+                    <td>
+                        @Html.ActionLink("编辑", "Update", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                        @Html.ActionLink("删除", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm", onClick = "return IsDelNow();" })
+                    </td>
+                </tr>
+                    { i++; }
+                }
+            </tbody>
+        </table>
+        <div class="text-center">
+            <nav>
+                <ul class="pagination">
+                    @Html.Pager(ViewBag.pagerModel as Entities.Query.PagerQuery)
+                </ul>
+            </nav>
+        </div>
+    }
+</div>

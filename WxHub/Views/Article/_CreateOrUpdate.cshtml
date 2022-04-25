@@ -1,0 +1,59 @@
+﻿@model Entities.Article
+@Html.HiddenFor(model => model.Id)
+<div class="row">
+    <div class="col-sm-9 col-md-9 edit-left">
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.Title)
+            </span>
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "输入文章标题" } })
+        </div>
+        @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        <div class="clear"></div>
+        @Html.TextAreaFor(model => model.Content, new {  style = "width:100%;height:400px;" })
+        @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+        <div class="text-center">
+            <div class="clear"></div>
+            <button type="reset" class="btn btn-primary" style="width: 10%">重置</button>
+            <button type="submit" class="btn btn-primary" style="width: 10%">提交</button>
+        </div>
+    </div>
+    <div class="col-sm-3 col-md-3 edit-right">
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.CreatedTime)
+            </span>
+            @Html.EditorFor(model => model.CreatedTime, new { htmlAttributes = new { @class = "form-control form_datetime", id = "select-datetime",Readonly = "readonly" } })
+        </div>
+        @Html.ValidationMessageFor(model => model.CreatedTime, "", new { @class = "text-danger" })
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.Author)
+            </span>
+            @Html.EditorFor(model => model.Author, new { htmlAttributes = new { @class = "form-control", size = "16", placeholder = "输入作者" } })
+        </div>
+        <div class="clear"></div>
+         <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.Source)
+            </span>
+            @Html.EditorFor(model => model.Source, new { htmlAttributes = new { @class = "form-control", size = "16", placeholder = "输入来源" } })
+        </div>
+        <div class="clear"></div>
+        @*<div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.Tag)
+            </span>
+            @Html.EditorFor(model => model.Tag, new { htmlAttributes = new { @class = "form-control", size = "16",placeholder = "输入标签" } })
+        </div>
+        @Html.ValidationMessageFor(model => model.Tag, "", new { @class = "text-danger" })*@
+        @*<div class="clear"></div>
+        @Html.EditorFor(model => model.IsSync)
+        <div class="clear"></div>
+        <div class="input-group">
+            @Html.EditorFor(model => model.Cover)
+        </div>*@
+    </div>
+
+</div>

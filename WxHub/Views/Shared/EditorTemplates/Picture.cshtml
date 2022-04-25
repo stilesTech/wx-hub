@@ -1,0 +1,54 @@
+﻿@model String
+@using Entities;
+@using Common;
+@{
+    Picture picture = null;
+    if (string.IsNullOrEmpty(Model))
+    {
+        picture = null;//new Business.BaseService<Picture>().GetById(Model);
+    }
+}
+<div id="picturePannel">
+    <input type="hidden" name="picturePath" value="@Model" />
+</div>
+<div id="defImg">
+    @if (string.IsNullOrEmpty(Model))
+    {
+        <img src="@Model" width='120' style="max-height:200px" />
+    }
+    else
+    {
+        <img src="~/images/defaultAvatar.jpg" width='120' style="max-height:200px" />
+    }
+</div>
+<span id="uploadify"></span>
+<script type="text/javascript">
+    $(function () {
+        $('#uploadify').uploadify({
+            uploader: '/Picture/Upload',           // 服务器端处理地址
+            swf: '/uploadify/uploadify.swf',    // 上传使用的 Flash
+            method:'post',
+            width: 120,                          // 按钮的宽度
+            height: 30,                         // 按钮的高度
+            buttonText: "上传",                 // 按钮上的文字
+            buttonCursor: 'hand',                // 按钮的鼠标图标
+
+            fileObjName: 'fileData',            // 上传参数名称
+
+            // 两个配套使用
+            fileTypeExts: "*.jpg;*.png;*.gif;",             // 扩展名
+            fileTypeDesc: "请选择 jpg png gif mp3 文件",     // 文件说明
+            
+            auto: true,                // 选择之后，自动开始上传
+            multi: false,               // 是否支持同时上传多个文件
+            queueSizeLimit: 5,          // 允许多文件上传的时候，同时上传文件的个数
+           
+            onUploadSuccess: function (file, data) {
+                var strJson = data;
+                var obj = new Function("return" + strJson)();
+                $('#defImg').html(" <img src='" + obj.fileName + "' width='120' style='max-height:200px' />");
+                $('#picturePannel').html(" <input type='hidden' name='picturePath' value='" + obj.fileName + "' />");
+            }
+        });
+    });
+</script>

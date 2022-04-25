@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "后台首页";
+}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header"><i class="fa fa-reorder"></i> 管理后台</h1>
+
+    <div class="row placeholders">
+        <div class="col-xs-4 col-sm-4 placeholder">
+            <h1><i class="fa fa-rocket"></i></h1>
+            <span class="text-muted"><a href="/sysUser/list">@ViewBag.userNum</a>用户数</span>
+        </div>
+        <div class="col-xs-4 col-sm-4 placeholder">
+            <h1><i class="fa fa-file-text"></i></h1>
+            <span class="text-muted"><a href="/article/list">@ViewBag.articlesNum</a> 同步的文章数</span>
+        </div>
+        <div class="col-xs-4 col-sm-4 placeholder">
+            <h1><i class="fa fa-comments"></i></h1>
+            <span class="text-muted"><a href="/chapters/list">@ViewBag.chaptersNum</a> 章节数</span>
+        </div>
+    </div>
+    <br />
+
+    <h2 class="sub-header"><i class="fa fa-comment"></i> 最新留言</h2>
+    <div class="table-responsive">
+    </div>
+    <h2 class="sub-header"><i class="fa fa-link"></i> 推荐</h2>
+    <div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">stiles-美好一天开始了！</a>
+        </div>
+    </div>
+</div>

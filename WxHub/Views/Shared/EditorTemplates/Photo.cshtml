@@ -1,0 +1,14 @@
+﻿@model string
+<div>
+    <input type="button" onclick=" GetPhotos() " style="display: none;" />
+    <div class="photoUpload clearfix">
+        <div class="photoDisplayChange"><a href="###" class="resetPhotoDelete" style="display:none;">恢复删除</a> 显示比例：<a href="###">1X</a> <a href="###">4X</a> <a href="###">6X</a> <a href="###">9X</a></div>
+        <p><input type="file" name="file_upload" id="file_upload_1" /></p>
+        <div id="retip"></div>
+        <ul class="photobox box clearfix"></ul>
+        <div class="controls-tip">单选按钮选中表示设为封面</div>
+    </div>
+    <div class="hide">
+        <textarea name="Text" id="Text">@Model</textarea>
+    </div>
+</div>

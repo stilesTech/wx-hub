@@ -1,0 +1,87 @@
+﻿<div class="col-sm-2 col-md-2 sidebar">
+    @*<ul class="nav nav-sidebar">
+            <li>
+                <a aria-controls="category" aria-expanded="false" href="#category" data-toggle="collapse"
+                   class="collapsed"><i class="fa  fa-bars"></i>栏目管理</a>
+            </li>
+            <div class="panel-collapse collapse" id="category">
+                <ul class="nav nav-sidebar-down">
+                    <li><a href="/category/create">新建栏目</a></li>
+                    <li><a href="/category/list">栏目列表</a></li>
+                </ul>
+            </div>
+        </ul>*@
+    <ul class="nav nav-sidebar">
+        <li>
+            <a aria-controls="chapters" aria-expanded="false" href="#chapters" data-toggle="collapse" class="collapsed">
+                <i class="fa fa-file-text"></i> 采集管理
+            </a>
+        </li>
+        <div class="panel-collapse collapse" id="chapters">
+            <ul class="nav nav-sidebar-down">
+                <li><a href="/chapters/collect">新建采集</a></li>
+                <li><a href="/chapters/list">已采集内容</a></li>
+            </ul>
+        </div>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li>
+            <a aria-controls="news" aria-expanded="false" href="#news" data-toggle="collapse" class="collapsed">
+                <i class="fa fa-file-text"></i> 文章管理
+            </a>
+        </li>
+        <div class="panel-collapse collapse" id="news">
+            <ul class="nav nav-sidebar-down">
+                @*<li><a href="/article/create">新建文章</a></li>*@
+                <li><a href="/article/list">文章列表</a></li>
+            </ul>
+        </div>
+    </ul>
+
+    <ul class="nav nav-sidebar">
+        <li>
+            <a aria-controls="wechatConfig" aria-expanded="false" href="#wechatConfig" data-toggle="collapse" class="collapsed">
+                <i class="fa fa-file-text"></i> 公众号配置
+            </a>
+        </li>
+        <div class="panel-collapse collapse" id="wechatConfig">
+            <ul class="nav nav-sidebar-down">
+                <li><a href="/wechatConfig/create">新建配置</a></li>
+                <li><a href="/wechatConfig/list">配置列表</a></li>
+            </ul>
+        </div>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li>
+            <a aria-controls="job" aria-expanded="false" href="#users" data-toggle="collapse" class="collapsed">
+                <i class="fa fa-user"></i> 用户管理
+            </a>
+        </li>
+        <div class="panel-collapse collapse" id="users">
+            <ul class="nav nav-sidebar-down">
+                <li><a href="/sysUser/create">新建用户</a></li>
+                <li><a href="/sysUser/list">用户列表</a></li>
+            </ul>
+        </div>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li>
+            <a aria-controls="config" aria-expanded="false" href="#config" data-toggle="collapse" class="collapsed">
+                <i class="fa fa-file-text"></i> 配置列表
+            </a>
+        </li>
+        <div class="panel-collapse collapse" id="config">
+            <ul class="nav nav-sidebar-down">
+                <li><a href="/config/create">新建配置</a></li>
+                <li><a href="/config/list">配置列表</a></li>
+            </ul>
+        </div>
+    </ul>
+
+    @*<ul class="nav nav-sidebar">
+            <li><a href="/adminconfig/index"><i class="fa fa-cogs"></i> 网站配置</a></li>
+        </ul>*@
+    @*<ul class="nav nav-sidebar">
+            <li><a href="http://ta.qq.com" target="_blank"><i class="fa fa-area-chart"></i> 统计分析</a></li>
+        </ul>*@
+</div>

@@ -1,0 +1,21 @@
+﻿@model Entities.SysUser
+
+@{
+    ViewBag.Title = "新建配置";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header"><i class="fa fa-file-text"></i> 新建账号</h1>
+        @Html.Partial("_CreateOrUpdate", Model)
+    </div>
+}
+@section script{
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.unobtrusive.min.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap-datetimepicker.min.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap-datetimepicker.zh-CN.js")" charset="UTF-8"></script>
+    <script src="@Url.Content("~/js/article/script.js?v=2")"></script>
+}

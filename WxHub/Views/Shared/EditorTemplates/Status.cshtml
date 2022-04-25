@@ -1,0 +1,7 @@
+﻿@model sbyte
+<div class="input-group">
+    <label class="checkbox-inline">
+        立即发布<input type="radio" name="Status" id="inlineRadio1" value="1" @if (Model==1) { @Html.Raw("checked=\"checked\"")  }>
+        保存草稿<input type="radio" name="Status" id="inlineRadio1" value="2" @if (Model==2) { @Html.Raw("checked=\"checked\"")}>
+    </label>
+</div>

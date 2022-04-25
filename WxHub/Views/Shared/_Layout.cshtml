@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/css/bootstrap.min.css?v=")@DateTime.Now.Ticks" rel="stylesheet" />
+    <link href="@Url.Content("~/css/font-awesome.min.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/css/style.css?v=")@DateTime.Now.Ticks" rel="stylesheet" />
+    <script src="@Url.Content("~/js/jquery-1.11.2.min.js?v=")@DateTime.Now.Ticks"></script>
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Template/images/ico/favicon.ico")">
+    @RenderSection("style", false)
+</head>
+<body>
+    @Html.Partial("Topbar")
+    <div class="container-fluid">
+        <div class="row">
+            @Html.Partial("Sidebar")
+            @RenderBody()
+        </div>
+    </div>
+    <script src="@Url.Content("~/js/bootstrap.min.js?v=")@DateTime.Now.Ticks"></script>
+    @RenderSection("script", false)
+</body>
+</html>

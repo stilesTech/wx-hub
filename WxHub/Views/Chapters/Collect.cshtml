@@ -1,0 +1,171 @@
+﻿@model Entities.Chapters
+
+@{
+    ViewBag.Title = "新建采集";
+}
+@section style{
+<link href="@Url.Content(" ~ /uploadify/uploadify.css")" rel="stylesheet" />
+<link href="@Url.Content(" ~ /css/bootstrap-datetimepicker.min.css")" rel="stylesheet" />
+<script src="@Url.Content(" ~ /uploadify/jquery.uploadify.min.js?ver =")@DateTime.Now.Ticks"></script>
+<style>
+    .level-title {
+        margin-left: 0px !important;
+    }
+    .level2 {
+        margin-left: 50px;
+    }
+    .level3 {
+        margin-left: 100px;
+    }
+</style>
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+<div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+    <h1 class="page-header"><i class="fa fa-file-text"></i> 采集文章</h1>
+    <div class="row">
+        <div class="col-sm-9 col-md-9 edit-left">
+            <div class="input-group">
+                <span class="input-group-addon">
+                    @Html.DisplayNameFor(model => model.Title)
+                </span>
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control", placeholder = "输入文章标题" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+
+            <div class="clear"></div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                    公众号
+                </span>
+                @Html.DropDownList("WechatConfigId", ViewBag.Cats as IEnumerable<SelectListItem>, new { @class = "form-control"})
+            </div>
+            <div class="clear"></div>
+            <div style="border: 1px solid #ccc; padding:5px;" class="ContentTag">
+                <div class="Content">
+                    <div class="pg" data-level='2'>
+                        <div class="input-group level-title level2 head-title">
+                            <span class="input-group-addon">
+                                章节标题
+                            </span>
+                            <input class="form-control text-box single-line" id="Title" name="Title" placeholder="输入文章一级标题" style="width:90%" type="text" value="">
+                            <input type="button" class="btn btn-danger btn-sm remove-row" value="删除" style="width:10%;height:34px;" />
+                        </div>
+                        <div class="clear"></div>
+
+                        @*<div class="input-group pg">
+                        <span class="input-group-addon">
+                            标题
+                        </span>
+                        <input class="form-control text-box single-line" name="Title" placeholder="输入文章标题" style="width:30%" type="text" value="">
+                        <input class="form-control text-box single-line" name="SourceUrl" placeholder="输入文章链接" style="max-width:65%" type="url" value="">
+                        <input type="button" class="btn btn-danger btn-sm remove-row" value="删除" style="width:5%;height:34px;" />
+                    </div>
+                    <div class="clear"></div>*@
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="clear"></div>
+                    <input type="button" class="btn btn-primary new-row-title-tag" data-level="2" style="width: 10%;min-width:120px;" value="添加一级标题" />
+                    <input type="button" class="btn btn-primary new-row-tag" data-level="2" style="width: 10%; min-width: 120px;" value="添加二级链接" />
+                    @*<input type="button" class="btn btn-primary new-row-title-tag" data-level="3" style="width: 10%;min-width:120px;" value="添加章节子标题" />
+                <input type="button" class="btn btn-primary new-row-tag" data-level="3" style="width: 10%; min-width: 120px;" value="添加章节子链接" />*@
+                </div>
+            </div>
+
+            <div class="text-center">
+                <div class="clear"></div>
+                <input type="button" class="btn btn-primary" id="submit" style="width: 10%" value="提交">
+            </div>
+        </div>
+            <div class="col-sm-3 col-md-3 edit-right">
+                <div class="clear"></div>
+                <div class="input-group">
+                    <span class="input-group-addon">
+                        @Html.DisplayNameFor(model => model.Tag)
+                    </span>
+                    @Html.EditorFor(model => model.Tag, new { htmlAttributes = new { @class = "form-control", size = "16", placeholder = "输入标签" } })
+                </div>
+            </div>
+
+        </div>
+</div>
+}
+@section script{
+<script src="@Url.Content(" ~ /js/jquery.validate.min.js")"></script>
+<script src="@Url.Content(" ~ /js/jquery.validate.unobtrusive.min.js")"></script>
+<script src="@Url.Content(" ~ /js/bootstrap-datetimepicker.min.js")"></script>
+<script src="@Url.Content(" ~ /js/bootstrap-datetimepicker.zh-CN.js")" charset="UTF-8"></script>
+<script src="@Url.Content(" ~ /ueditor/ueditor.config.js")"></script>
+<script src="@Url.Content(" ~ /ueditor/ueditor.all.min.js")"></script>
+<script src="@Url.Content(" ~ /js/article/script.js?v =2")"></script>
+<script>
+    @*var groupTemp= "<div style='border: 1px solid #ccc; padding:5px;' ><div class='input-group'><span class='input-group-addon'>标题</span><input class='form-control text-box single-line' name='Title' placeholder='输入文章标题' style='width:30%' type='text' value=''><input class='form-control text-box single-line'  name='SourceUrl' placeholder='输入文章链接' style='width:70%' type='text' value=''></div><div class='clear'></div><div class='text-center'><div class='clear'></div><button type='reset' class='btn btn-primary' style='width: 10%'>添加新的一行</button><button type='submit' class='btn btn-primary' style='width: 10%'>添加下级章节</button></div></div>"*@
+
+    var rowHeadTitleHtml = "<div class='pg' data-level='{{LEVEL}}'><div class='clear'></div><div class='input-group level-title level{{LEVEL}} head-title'><span class='input-group-addon' >章节标题</span><input class='form-control text-box single-line' name='Title' placeholder='输入文章一级标题' style='width:90%' data-type='1' type='text' value=''><input type='button' class='btn btn-danger btn-sm remove-row' value='删除' style='width:10%;height:34px;' /></div></div>";
+
+    var rowHtml = "<div class='pg' data-level='{{LEVEL}}'><div class='clear'></div><div class='input-group level{{LEVEL}}'><span class='input-group-addon' >目录标题</span><input class='form-control text-box single-line' name='Title' placeholder='输入文章二级标题' style='width:30%' type='text' data-type='2' value=''><input class='form-control text-box single-line'  name='SourceUrl' placeholder='输入文章链接' style='max-width:60%' type='url' value=''><input type='button' class='btn btn-danger btn-sm remove-row' value='删除' style='width:10%;height:34px;' /></div></div>";
+
+    function getRowHtml(level) {
+        return rowHtml.replaceAll("{{LEVEL}}", level);
+    }
+
+    function getHeadTitleHtml(level) {
+        return rowHeadTitleHtml.replaceAll("{{LEVEL}}", level);
+    }
+
+    $(document).on('click', '.new-row-tag', function () {
+        var level = $(this).attr("data-level")||"1";
+        $(this).parents(".ContentTag").first().find(".Content").append(getRowHtml(level));
+    })
+
+    $(document).on('click', '.new-row-title-tag', function () {
+        var level =  $(this).attr("data-level") || "1";
+        $(this).parents(".ContentTag").first().find(".Content").append(getHeadTitleHtml(level));
+    })
+
+    $(document).on('click',".remove-row", function () {
+        $(this).parents(".pg").first().remove();
+    })
+
+    $("#submit").click(function () {
+        var title = $("#Title").val();
+        var wechatConfigId = $("#WechatConfigId").val() ?? "0";
+        if (wechatConfigId == "0") {
+            confirm("请选择公众号");
+            return;
+        }
+
+        var tag = $("#Tag").val();
+        var data = { title: title, tag: tag, wechatConfigId: Number(wechatConfigId), collecs: [] }
+        data.collecs = new Array();
+        var pgList = $(".Content").find(".pg");
+        for (var i = 0; i < pgList.length; i++) {
+            var isHeadTitle = $(pgList[i]).find(".head-title").length > 0;
+            var level = $(pgList[i]).attr("data-level");
+            if (isHeadTitle) {
+                var subTitle = $(pgList[i]).find("input").first().val();
+                data.collecs.push({ title: subTitle, isTitle: true, level: Number(level) });
+            } else {
+                var headTitle = $(pgList[i]).find("input").first().val();
+                var url = $($(pgList[i]).find("input")[1]).val();
+                data.collecs.push({ title: headTitle, isTitle: false, url: url, level: Number(level) });
+            }
+        }
+        console.log(data);
+        $.post("/Chapters/Collect", { data: JSON.stringify(data) }, function (result) {
+            if (result.media_id) {
+                location.reload();
+            }
+            confirm(JSON.stringify(result));
+        });
+    });
+    
+    function clickNewRow(tag) {
+        $(this).parent(".ContentTag").find(".Content").append(rowTemp);
+    }
+</script>
+
+}

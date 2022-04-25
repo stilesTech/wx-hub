@@ -1,0 +1,24 @@
+﻿@model Entities.Config
+
+@{
+    ViewBag.Title = "更新配置";
+}
+@section style{
+    <link href="@Url.Content("~/css/bootstrap-datetimepicker.min.css?v=")@DateTime.Now.Ticks" rel="stylesheet" />
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="col-sm-10 col-sm-offset-2 col-md-10 col-md-offset-2 main">
+        <h1 class="page-header"><i class="fa fa-file-text"></i> 编辑配置</h1>
+        @Html.Partial("_CreateOrUpdate", Model)
+    </div>
+}
+@section script{
+    <script src="@Url.Content("~/js/jquery.validate.min.js")"></script>
+    <script src="@Url.Content("~/js/jquery.validate.unobtrusive.min.js")"></script>
+    <script src="@Url.Content("~/js/bootstrap-datetimepicker.min.js?v=")@DateTime.Now.Ticks"></script>
+    <script src="@Url.Content("~/js/bootstrap-datetimepicker.zh-CN.js?v=")@DateTime.Now.Ticks" charset="UTF-8"></script>
+    <script src="@Url.Content("~/js/article/script.js?v=")@DateTime.Now.Ticks"></script>
+}

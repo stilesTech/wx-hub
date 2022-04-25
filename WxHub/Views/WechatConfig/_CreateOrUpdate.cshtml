@@ -1,0 +1,67 @@
+﻿@model Entities.WechatConfig
+<div class="row">
+    @Html.HiddenFor(model => model.Id)
+    <div class="col-sm-9 col-md-9 edit-left">
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.Name)
+            </span>
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入名称" } })
+        </div>
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.AppId)
+            </span>
+            @Html.EditorFor(model => model.AppId, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入AppId" } })
+        </div>
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.AppSecret)
+            </span>
+            @Html.EditorFor(model => model.AppSecret, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入AppSecret" } })
+        </div>
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.ArticleCover)
+            </span>
+            @Html.EditorFor(model => model.ArticleCover, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入内容封面" } })
+        </div>
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.ArticleMenuCover)
+            </span>
+            @Html.EditorFor(model => model.ArticleMenuCover, new { htmlAttributes = new { @class = "form-control", placeholder = "请输入目录封面" } })
+        </div>
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.Description)
+            </span>
+            <textarea class="form-control" rows="3" name="Description" placeholder="请输入备注">@Model.Description</textarea>
+        </div>
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.TopHtml)
+            </span>
+            <textarea class="form-control" rows="3" name="TopHtml" placeholder="请输入头部html">@Model.TopHtml</textarea>
+        </div>
+        <div class="clear"></div>
+        <div class="input-group">
+            <span class="input-group-addon">
+                @Html.DisplayNameFor(model => model.BottomHtml)
+            </span>
+            <textarea class="form-control" rows="3" name="BottomHtml" placeholder="请输入底部html">@Model.BottomHtml</textarea>
+        </div>
+        <div class="clear"></div>
+        <div class="text-center">
+            <div class="clear"></div>
+            <button type="reset" class="btn btn-primary" style="width: 10%">重置</button>
+            <button type="submit" class="btn btn-primary" style="width: 10%">提交</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,57 @@
+﻿@model Entities.Querys.LoginModel
+@{
+    Layout = null;
+    ViewBag.Title = "Log in";
+}
+
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body style="background-color: #f5f5f5">
+    <div class="container">
+        @using (Html.BeginForm("Login", "Account", new { returnUrl = ViewBag.returnUrl }, FormMethod.Post,false, new { @class = "login-form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="input-group">
+                <span class="input-group-addon">
+                    @Html.LabelFor(model => model.UserName)
+                </span>
+                @Html.TextBoxFor(model => model.UserName, new { @class = "form-control", id = "account" })
+            </div>
+
+            <br />
+            <div class="input-group">
+                <span class="input-group-addon">
+                    @Html.LabelFor(model => model.Password)
+                </span>
+                @Html.PasswordFor(model => model.Password, new { @class = "form-control", id = "passwd" })
+            </div>
+
+            <div class="checkbox text-right">
+                <div class="pull-left"><a href="/">返回首页</a></div>
+                <label>
+                    @Html.CheckBoxFor(model => model.RememberMe)
+                    @Html.DisplayNameFor(model => model.RememberMe)
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">登录</button>
+            <br />
+           @Html.ValidationSummary(false, null, new { @class = "text-danger" })
+            <div class="text-center">Power by <a href="http://www.stiless.cc">Stiles</a></div>
+               
+        }
+    </div>
+    <script src="~/js/jquery-1.11.2.min.js"></script>
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script src="~/js/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
+
+
+

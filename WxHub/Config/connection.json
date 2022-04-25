@@ -1,0 +1,18 @@
+﻿{
+  "ConnectionStringWrapperSettings": {
+    "DefaultConnectionStringName": "wx_hub",
+    "ConnectionStringEntries": [
+      {
+        "Name": "wx_hub",
+        "ConnectionString": "server=127.0.0.1;database=wx_hub;uid=root;pwd=123456789;Allow Zero Datetime=True;persistsecurityinfo=True; Charset=utf8mb4;",
+        "ProviderName": "SomeProvider"
+      }
+      //,
+      //{
+      //  "Name": "def",
+      //  "ConnectionString": "server=localhost;database=db2;username=user2;password=pass2;",
+      //  "ProviderName": "SomeProvider"
+      //}
+    ]
+  }
+}
