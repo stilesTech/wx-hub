@@ -11,7 +11,7 @@ wx-operate-api 是wx-hub站点的后台支撑服务，需要添加对应的微�
 
 ## 二、注意事项
 
-注意1：两个服务都依赖数据库进行信息交换和传输，具体地址：
+注意1：两个服务都依赖数据库进行信息交换和传输，具体地址：https://github.com/stilesTech/wx-hub/blob/main/wx-hub-db.sql
 
 注意2：注意修改对应服务的数据库配置账号和密码。
 
