@@ -2,6 +2,7 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
+*.js linguist-language = c#
 
 # Explicitly declare text files you want to always be normalized and converted
 # to native line endings on checkout.
